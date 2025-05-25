@@ -126,24 +126,6 @@
       border-radius: 8px;
       border: none;
     }
-
-    .diya-gif {
-      position: fixed;
-      width: 90px;
-      height: auto;
-      z-index: 1000;
-      pointer-events: none;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    .bottom-left {
-      bottom: 10px;
-      left: 10px;
-    }
-    .bottom-right {
-      bottom: 10px;
-      right: 10px;
-    }
-
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -156,15 +138,11 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    @keyframes glow {
-      from { opacity: 0.6; transform: scale(1); }
-      to { opacity: 1; transform: scale(1.1); }
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🌟अखंड सौभाग्य का प्रतीक बट सावित्री पूजा 🌟</h1>
+    <h1>🌟 अखंड सौभाग्य का प्रतीक बट सावित्री पूजा 🌟</h1>
 
     <img id="selectedImage" src="https://github.com/saurani/Diwali-wishes-3/raw/main/Laxmimata.png" alt="लक्ष्मी माता" />
 
@@ -190,7 +168,12 @@
     </div>
   </div>
 
- 
+  <!-- 🔊 Background Music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://raw.githubusercontent.com/saurani/Vat-savitri-puja-/main/bg-music.mp3" type="audio/mp3">
+    आपका ब्राउज़र म्यूजिक सपोर्ट नहीं करता।
+  </audio>
+
   <script>
     function generateLink() {
       const name = document.getElementById('senderName').value.trim();
