@@ -40,14 +40,12 @@
       margin-bottom: 18px;
       animation: fadeInDown 1s ease;
     }
-    #selectedImage {
+    video {
       width: 100%;
       max-height: 320px;
       border-radius: 12px;
       border: 3px solid #FFD700;
       margin-bottom: 14px;
-      object-fit: cover;
-      object-position: center top;
       animation: fadeIn 1.5s ease;
     }
     #senderMessage {
@@ -144,7 +142,10 @@
   <div class="container">
     <h1>🌟 अखंड सौभाग्य का प्रतीक बट सावित्री पूजा 🌟</h1>
 
-    <img id="selectedImage" src=" https://raw.githubusercontent.com/saurani/Vat-savitri-puja-/main/1748137606672.jpg" alt="लक्ष्मी माता" />
+    <video id="mainVideo" autoplay muted loop controls>
+      <source src="https://raw.githubusercontent.com/saurani/Vat-savitri-puja-/main/VN20250525_072233.mp4" type="video/mp4">
+      आपका ब्राउज़र वीडियो को सपोर्ट नहीं करता।
+    </video>
 
     <div id="senderMessage"></div>
 
@@ -170,20 +171,19 @@
 
   <!-- 🔊 Background Music -->
   <audio id="bgMusic" autoplay loop>
-    <source src="https://raw.githubusercontent.com/saurani/Vat-savitri-puja-/main/%E0%A4%B5%E0%A4%9F_%E0%A4%B8%E0%A4%BE%E0%A4%B5%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A5%80_%E0%A4%AA%E0%A5%82%E0%A4%9C%E0%A4%BE_2025___Coming_soon_vat_savitri_puja_status___vat_savitri_puja_%23shorts_%23song(256k).mp3
-" type="audio/mp3">
+    <source src="https://raw.githubusercontent.com/saurani/Vat-savitri-puja-/main/bg-music.mp3" type="audio/mp3">
     आपका ब्राउज़र म्यूजिक सपोर्ट नहीं करता।
   </audio>
 
   <script>
     function generateLink() {
       const name = document.getElementById('senderName').value.trim();
-      const img = document.getElementById('selectedImage').src;
+      const videoSrc = document.getElementById('mainVideo').querySelector('source').src;
       if (!name) {
         alert('कृपया अपना नाम डालें');
         return null;
       }
-      return `${window.location.href.split('?')[0]}?sender=${encodeURIComponent(name)}&img=${encodeURIComponent(img)}`;
+      return `${window.location.href.split('?')[0]}?sender=${encodeURIComponent(name)}&vid=${encodeURIComponent(videoSrc)}`;
     }
 
     function copyGeneratedLinkDirect() {
@@ -232,11 +232,12 @@
     window.onload = () => {
       const params = new URLSearchParams(window.location.search);
       const sender = params.get('sender');
-      const img = params.get('img');
-      if (sender && img) {
+      const vid = params.get('vid');
+      if (sender && vid) {
         document.getElementById('senderMessage').textContent =
           `🎉 ${decodeURIComponent(sender)} की ओर से बट सावित्री पूजा की हार्दिक शुभकामनाएं 🎉`;
-        document.getElementById('selectedImage').src = img;
+        document.getElementById('mainVideo').querySelector('source').src = vid;
+        document.getElementById('mainVideo').load();
       }
     }
   </script>
